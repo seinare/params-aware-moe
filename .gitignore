@@ -1,0 +1,17 @@
+.venv/
+__pycache__/
+*.py[cod]
+.DS_Store
+
+# Large/generated experiment assets.
+data/datasets/
+data/datasets
+data/tokenizers/
+data/tokenizers
+data/manifest.json
+data/docs_selected.jsonl
+data/docs_selected.source_manifest.json
+logs/
+runs/
+checkpoints/
+wandb/
