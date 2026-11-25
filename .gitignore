@@ -11,7 +11,13 @@ data/tokenizers
 data/manifest.json
 data/docs_selected.jsonl
 data/docs_selected.source_manifest.json
-logs/
-runs/
-checkpoints/
-wandb/
+/logs/
+/runs/
+/checkpoint/
+/checkpoints/
+/artifacts/
+/incoming/
+/wandb/
+*.pid
+*.tar
+*.tar.gz

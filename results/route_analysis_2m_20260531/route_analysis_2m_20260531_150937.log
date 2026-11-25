@@ -1,0 +1,192 @@
+=== ddp10b_linear_e128k16_step019073 router=linear E=128 K=16 P=256
+ddp10b_linear_e128k16_step019073: 262144/2097152 tokens
+ddp10b_linear_e128k16_step019073: 524288/2097152 tokens
+ddp10b_linear_e128k16_step019073: 786432/2097152 tokens
+ddp10b_linear_e128k16_step019073: 1048576/2097152 tokens
+ddp10b_linear_e128k16_step019073: 1310720/2097152 tokens
+ddp10b_linear_e128k16_step019073: 1572864/2097152 tokens
+ddp10b_linear_e128k16_step019073: 1835008/2097152 tokens
+ddp10b_linear_e128k16_step019073: 2097152/2097152 tokens
+=== ddp10b_linear_e256k16_step019073 router=linear E=256 K=16 P=256
+ddp10b_linear_e256k16_step019073: 262144/2097152 tokens
+ddp10b_linear_e256k16_step019073: 524288/2097152 tokens
+ddp10b_linear_e256k16_step019073: 786432/2097152 tokens
+ddp10b_linear_e256k16_step019073: 1048576/2097152 tokens
+ddp10b_linear_e256k16_step019073: 1310720/2097152 tokens
+ddp10b_linear_e256k16_step019073: 1572864/2097152 tokens
+ddp10b_linear_e256k16_step019073: 1835008/2097152 tokens
+ddp10b_linear_e256k16_step019073: 2097152/2097152 tokens
+=== ddp10b_linear_e32k16_20260530_062619_step019073 router=linear E=32 K=16 P=128
+ddp10b_linear_e32k16_20260530_062619_step019073: 262144/2097152 tokens
+ddp10b_linear_e32k16_20260530_062619_step019073: 524288/2097152 tokens
+ddp10b_linear_e32k16_20260530_062619_step019073: 786432/2097152 tokens
+ddp10b_linear_e32k16_20260530_062619_step019073: 1048576/2097152 tokens
+ddp10b_linear_e32k16_20260530_062619_step019073: 1310720/2097152 tokens
+ddp10b_linear_e32k16_20260530_062619_step019073: 1572864/2097152 tokens
+ddp10b_linear_e32k16_20260530_062619_step019073: 1835008/2097152 tokens
+ddp10b_linear_e32k16_20260530_062619_step019073: 2097152/2097152 tokens
+=== ddp10b_linear_e64k16_20260530_090153_step019073 router=linear E=64 K=16 P=128
+ddp10b_linear_e64k16_20260530_090153_step019073: 262144/2097152 tokens
+ddp10b_linear_e64k16_20260530_090153_step019073: 524288/2097152 tokens
+ddp10b_linear_e64k16_20260530_090153_step019073: 786432/2097152 tokens
+ddp10b_linear_e64k16_20260530_090153_step019073: 1048576/2097152 tokens
+ddp10b_linear_e64k16_20260530_090153_step019073: 1310720/2097152 tokens
+ddp10b_linear_e64k16_20260530_090153_step019073: 1572864/2097152 tokens
+ddp10b_linear_e64k16_20260530_090153_step019073: 1835008/2097152 tokens
+ddp10b_linear_e64k16_20260530_090153_step019073: 2097152/2097152 tokens
+=== ddp10b_pa_e128k16_pd256_20260530_001618_step019073 router=param E=128 K=16 P=256
+ddp10b_pa_e128k16_pd256_20260530_001618_step019073: 262144/2097152 tokens
+ddp10b_pa_e128k16_pd256_20260530_001618_step019073: 524288/2097152 tokens
+ddp10b_pa_e128k16_pd256_20260530_001618_step019073: 786432/2097152 tokens
+ddp10b_pa_e128k16_pd256_20260530_001618_step019073: 1048576/2097152 tokens
+ddp10b_pa_e128k16_pd256_20260530_001618_step019073: 1310720/2097152 tokens
+ddp10b_pa_e128k16_pd256_20260530_001618_step019073: 1572864/2097152 tokens
+ddp10b_pa_e128k16_pd256_20260530_001618_step019073: 1835008/2097152 tokens
+ddp10b_pa_e128k16_pd256_20260530_001618_step019073: 2097152/2097152 tokens
+=== ddp10b_pa_e256k16_pd256_20260530_030007_step019073 router=param E=256 K=16 P=256
+ddp10b_pa_e256k16_pd256_20260530_030007_step019073: 262144/2097152 tokens
+ddp10b_pa_e256k16_pd256_20260530_030007_step019073: 524288/2097152 tokens
+ddp10b_pa_e256k16_pd256_20260530_030007_step019073: 786432/2097152 tokens
+ddp10b_pa_e256k16_pd256_20260530_030007_step019073: 1048576/2097152 tokens
+ddp10b_pa_e256k16_pd256_20260530_030007_step019073: 1310720/2097152 tokens
+ddp10b_pa_e256k16_pd256_20260530_030007_step019073: 1572864/2097152 tokens
+ddp10b_pa_e256k16_pd256_20260530_030007_step019073: 1835008/2097152 tokens
+ddp10b_pa_e256k16_pd256_20260530_030007_step019073: 2097152/2097152 tokens
+=== ddp10b_pa_e32k16_pd128_lb0_step019073 router=param E=32 K=16 P=128
+ddp10b_pa_e32k16_pd128_lb0_step019073: 262144/2097152 tokens
+ddp10b_pa_e32k16_pd128_lb0_step019073: 524288/2097152 tokens
+ddp10b_pa_e32k16_pd128_lb0_step019073: 786432/2097152 tokens
+ddp10b_pa_e32k16_pd128_lb0_step019073: 1048576/2097152 tokens
+ddp10b_pa_e32k16_pd128_lb0_step019073: 1310720/2097152 tokens
+ddp10b_pa_e32k16_pd128_lb0_step019073: 1572864/2097152 tokens
+ddp10b_pa_e32k16_pd128_lb0_step019073: 1835008/2097152 tokens
+ddp10b_pa_e32k16_pd128_lb0_step019073: 2097152/2097152 tokens
+=== ddp10b_pa_e32k16_pd128_step019073 router=param E=32 K=16 P=128
+ddp10b_pa_e32k16_pd128_step019073: 262144/2097152 tokens
+ddp10b_pa_e32k16_pd128_step019073: 524288/2097152 tokens
+ddp10b_pa_e32k16_pd128_step019073: 786432/2097152 tokens
+ddp10b_pa_e32k16_pd128_step019073: 1048576/2097152 tokens
+ddp10b_pa_e32k16_pd128_step019073: 1310720/2097152 tokens
+ddp10b_pa_e32k16_pd128_step019073: 1572864/2097152 tokens
+ddp10b_pa_e32k16_pd128_step019073: 1835008/2097152 tokens
+ddp10b_pa_e32k16_pd128_step019073: 2097152/2097152 tokens
+=== ddp10b_pa_e32k16_pd256_20260529_184412_step019073 router=param E=32 K=16 P=256
+ddp10b_pa_e32k16_pd256_20260529_184412_step019073: 262144/2097152 tokens
+ddp10b_pa_e32k16_pd256_20260529_184412_step019073: 524288/2097152 tokens
+ddp10b_pa_e32k16_pd256_20260529_184412_step019073: 786432/2097152 tokens
+ddp10b_pa_e32k16_pd256_20260529_184412_step019073: 1048576/2097152 tokens
+ddp10b_pa_e32k16_pd256_20260529_184412_step019073: 1310720/2097152 tokens
+ddp10b_pa_e32k16_pd256_20260529_184412_step019073: 1572864/2097152 tokens
+ddp10b_pa_e32k16_pd256_20260529_184412_step019073: 1835008/2097152 tokens
+ddp10b_pa_e32k16_pd256_20260529_184412_step019073: 2097152/2097152 tokens
+=== ddp10b_pa_e64k16_pd256_20260529_212352_step019073 router=param E=64 K=16 P=256
+ddp10b_pa_e64k16_pd256_20260529_212352_step019073: 262144/2097152 tokens
+ddp10b_pa_e64k16_pd256_20260529_212352_step019073: 524288/2097152 tokens
+ddp10b_pa_e64k16_pd256_20260529_212352_step019073: 786432/2097152 tokens
+ddp10b_pa_e64k16_pd256_20260529_212352_step019073: 1048576/2097152 tokens
+ddp10b_pa_e64k16_pd256_20260529_212352_step019073: 1310720/2097152 tokens
+ddp10b_pa_e64k16_pd256_20260529_212352_step019073: 1572864/2097152 tokens
+ddp10b_pa_e64k16_pd256_20260529_212352_step019073: 1835008/2097152 tokens
+ddp10b_pa_e64k16_pd256_20260529_212352_step019073: 2097152/2097152 tokens
+[
+  {
+    "model": "ddp10b_linear_e128k16_step019073",
+    "layers": 8,
+    "experts": 128,
+    "tokens": 2097152,
+    "gate_entropy_norm_mean": 0.9828281397199286,
+    "gate_max_over_mean_mean": 3.14243259624817,
+    "select_max_over_mean_mean": 1.565185546875,
+    "top16_gate_mass_mean": 0.230294814712002
+  },
+  {
+    "model": "ddp10b_linear_e256k16_step019073",
+    "layers": 8,
+    "experts": 256,
+    "tokens": 2097152,
+    "gate_entropy_norm_mean": 0.9775502139121887,
+    "gate_max_over_mean_mean": 4.86729470817503,
+    "select_max_over_mean_mean": 2.138209342956543,
+    "top16_gate_mass_mean": 0.15733931689141756
+  },
+  {
+    "model": "ddp10b_linear_e32k16_20260530_062619_step019073",
+    "layers": 8,
+    "experts": 32,
+    "tokens": 2097152,
+    "gate_entropy_norm_mean": 0.9857725822592999,
+    "gate_max_over_mean_mean": 1.9308271403717387,
+    "select_max_over_mean_mean": 1.2675721645355225,
+    "top16_gate_mass_mean": 0.6113864590396427
+  },
+  {
+    "model": "ddp10b_linear_e64k16_20260530_090153_step019073",
+    "layers": 8,
+    "experts": 64,
+    "tokens": 2097152,
+    "gate_entropy_norm_mean": 0.9859585011673354,
+    "gate_max_over_mean_mean": 2.4254099177710313,
+    "select_max_over_mean_mean": 1.4596054553985596,
+    "top16_gate_mass_mean": 0.36495466222403833
+  },
+  {
+    "model": "ddp10b_pa_e128k16_pd256_20260530_001618_step019073",
+    "layers": 8,
+    "experts": 128,
+    "tokens": 2097152,
+    "gate_entropy_norm_mean": 0.9961178901884754,
+    "gate_max_over_mean_mean": 1.775180949405733,
+    "select_max_over_mean_mean": 1.278998851776123,
+    "top16_gate_mass_mean": 0.1697078427722485
+  },
+  {
+    "model": "ddp10b_pa_e256k16_pd256_20260530_030007_step019073",
+    "layers": 8,
+    "experts": 256,
+    "tokens": 2097152,
+    "gate_entropy_norm_mean": 0.9966045148598536,
+    "gate_max_over_mean_mean": 1.9103874640362015,
+    "select_max_over_mean_mean": 1.385542869567871,
+    "top16_gate_mass_mean": 0.09225888771077555
+  },
+  {
+    "model": "ddp10b_pa_e32k16_pd128_lb0_step019073",
+    "layers": 8,
+    "experts": 32,
+    "tokens": 2097152,
+    "gate_entropy_norm_mean": 0.9491620731854877,
+    "gate_max_over_mean_mean": 2.7511400263907944,
+    "select_max_over_mean_mean": 1.944700002670288,
+    "top16_gate_mass_mean": 0.7166206056877562
+  },
+  {
+    "model": "ddp10b_pa_e32k16_pd128_step019073",
+    "layers": 8,
+    "experts": 32,
+    "tokens": 2097152,
+    "gate_entropy_norm_mean": 0.9971204467687156,
+    "gate_max_over_mean_mean": 1.4017680966276285,
+    "select_max_over_mean_mean": 1.1140660047531128,
+    "top16_gate_mass_mean": 0.5510658914897881
+  },
+  {
+    "model": "ddp10b_pa_e32k16_pd256_20260529_184412_step019073",
+    "layers": 8,
+    "experts": 32,
+    "tokens": 2097152,
+    "gate_entropy_norm_mean": 0.9947632611938242,
+    "gate_max_over_mean_mean": 1.5868331149672923,
+    "select_max_over_mean_mean": 1.1097773313522339,
+    "top16_gate_mass_mean": 0.5641301690299311
+  },
+  {
+    "model": "ddp10b_pa_e64k16_pd256_20260529_212352_step019073",
+    "layers": 8,
+    "experts": 64,
+    "tokens": 2097152,
+    "gate_entropy_norm_mean": 0.9960848840498707,
+    "gate_max_over_mean_mean": 1.6651961221441864,
+    "select_max_over_mean_mean": 1.2054803371429443,
+    "top16_gate_mass_mean": 0.308954299938962
+  }
+]

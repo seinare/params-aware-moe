@@ -1,0 +1,14 @@
+{
+  "repo_id": "HuggingFaceFW/fineweb-edu",
+  "name": "sample-10BT",
+  "split": "train",
+  "tokenizer_path": "/workspace/params-aware-moe/data/tokenizers/fineweb_1024_bpe.model",
+  "vocab_size": 1024,
+  "val_docs": 50000,
+  "train_docs": 5168767,
+  "val_tokens": 99618238,
+  "train_tokens": 10000000000,
+  "val_files": 1,
+  "train_files": 100,
+  "shard_size": 100000000
+}

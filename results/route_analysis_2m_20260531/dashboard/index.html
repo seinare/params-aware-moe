@@ -1,0 +1,346 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Route Distribution Dashboard</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f7f7f5;
+      --panel: #ffffff;
+      --line: #d8d8d2;
+      --text: #171714;
+      --muted: #686861;
+      --accent: #0b6bcb;
+      --accent2: #b13f2c;
+      --accent3: #1f7a4d;
+      --shadow: 0 1px 2px rgba(0,0,0,.05);
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: var(--bg);
+      color: var(--text);
+    }
+    header {
+      padding: 14px 18px 10px;
+      border-bottom: 1px solid var(--line);
+      background: var(--panel);
+      position: sticky;
+      top: 0;
+      z-index: 5;
+    }
+    h1 {
+      font-size: 18px;
+      margin: 0 0 10px;
+      font-weight: 650;
+    }
+    .controls {
+      display: grid;
+      grid-template-columns: minmax(260px, 1fr) 150px 150px 150px;
+      gap: 10px;
+      align-items: end;
+    }
+    label {
+      display: grid;
+      gap: 4px;
+      font-size: 12px;
+      color: var(--muted);
+    }
+    select, button {
+      height: 34px;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      background: #fff;
+      color: var(--text);
+      padding: 0 10px;
+      font-size: 13px;
+    }
+    button.active {
+      border-color: var(--accent);
+      color: var(--accent);
+      background: #eef6ff;
+    }
+    main {
+      padding: 16px 18px 24px;
+      display: grid;
+      gap: 14px;
+    }
+    .summary {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(120px, 1fr));
+      gap: 10px;
+    }
+    .metric, .chart, .table-panel {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      box-shadow: var(--shadow);
+    }
+    .metric {
+      padding: 10px 12px;
+      min-height: 64px;
+    }
+    .metric .k {
+      color: var(--muted);
+      font-size: 12px;
+      margin-bottom: 5px;
+    }
+    .metric .v {
+      font-variant-numeric: tabular-nums;
+      font-size: 20px;
+      font-weight: 650;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+    .chart {
+      padding: 12px;
+      min-height: 340px;
+    }
+    .chart-title {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 8px;
+      font-size: 14px;
+      font-weight: 650;
+    }
+    .chart-title span {
+      font-size: 12px;
+      color: var(--muted);
+      font-weight: 400;
+    }
+    svg {
+      width: 100%;
+      height: 280px;
+      display: block;
+      overflow: visible;
+    }
+    .axis { stroke: #aaa9a2; stroke-width: 1; }
+    .gridline { stroke: #ecece8; stroke-width: 1; }
+    .series-gate { stroke: var(--accent); fill: none; stroke-width: 1.7; }
+    .series-prob { stroke: var(--accent3); fill: none; stroke-width: 1.3; opacity: .75; }
+    .series-select { stroke: var(--accent2); fill: none; stroke-width: 1.3; opacity: .8; }
+    .bar { fill: #0b6bcb; opacity: .72; }
+    .bar2 { fill: #b13f2c; opacity: .62; }
+    .legend {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      font-size: 12px;
+      color: var(--muted);
+      margin-top: 4px;
+    }
+    .legend i {
+      display: inline-block;
+      width: 18px;
+      height: 3px;
+      vertical-align: middle;
+      margin-right: 5px;
+      border-radius: 2px;
+    }
+    .table-panel {
+      padding: 12px;
+      overflow: auto;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 12px;
+      font-variant-numeric: tabular-nums;
+    }
+    th, td {
+      text-align: right;
+      padding: 6px 7px;
+      border-bottom: 1px solid #eeeeea;
+      white-space: nowrap;
+    }
+    th:first-child, td:first-child { text-align: left; }
+    th { color: var(--muted); font-weight: 600; }
+    @media (max-width: 900px) {
+      .controls, .summary, .grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Route Distribution Dashboard</h1>
+    <div class="controls">
+      <label>Model <select id="model"></select></label>
+      <label>Layer <select id="layer"></select></label>
+      <label>Chart Scale <select id="scale"><option value="auto">auto</option><option value="share">share per model</option></select></label>
+      <label>Top Table <select id="topn"><option>16</option><option>32</option><option>64</option></select></label>
+    </div>
+  </header>
+  <main>
+    <section class="summary" id="summary"></section>
+    <section class="grid">
+      <div class="chart">
+        <div class="chart-title">Expert-ID Distribution <span>gate mean, softmax prob mean, selection rate</span></div>
+        <svg id="raw"></svg>
+        <div class="legend">
+          <span><i style="background:var(--accent)"></i>gate_mean</span>
+          <span><i style="background:var(--accent3)"></i>prob_mean</span>
+          <span><i style="background:var(--accent2)"></i>select_rate / K</span>
+        </div>
+      </div>
+      <div class="chart">
+        <div class="chart-title">Sorted Gate Curve <span>descending expert gate mass</span></div>
+        <svg id="sorted"></svg>
+      </div>
+    </section>
+    <section class="grid">
+      <div class="chart">
+        <div class="chart-title">Layer Heatmap: Gate Mean <span>expert id by layer</span></div>
+        <svg id="heat"></svg>
+      </div>
+      <div class="chart">
+        <div class="chart-title">Sorted Gate Curves By Layer <span>all 8 layers</span></div>
+        <svg id="allLayers"></svg>
+      </div>
+    </section>
+    <section class="table-panel">
+      <div class="chart-title">Top Experts In Selected Layer <span>sorted by gate_mean</span></div>
+      <table id="table"></table>
+    </section>
+  </main>
+  <script id="route-data" type="application/json"></script>
+  <script>
+    const fmt = new Intl.NumberFormat("en-US", { maximumFractionDigits: 5 });
+    const pct = new Intl.NumberFormat("en-US", { style: "percent", maximumFractionDigits: 2 });
+    let data;
+
+    function sum(a) { return a.reduce((x, y) => x + y, 0); }
+    function max(a) { return a.reduce((x, y) => Math.max(x, y), -Infinity); }
+    function mean(a) { return sum(a) / a.length; }
+    function entropyNorm(a) {
+      const total = sum(a);
+      if (!total) return 0;
+      let h = 0;
+      for (const v of a) {
+        const p = v / total;
+        if (p > 0) h -= p * Math.log(p);
+      }
+      return h / Math.log(a.length);
+    }
+    function pathLine(values, x0, y0, w, h, yMax) {
+      if (values.length === 1) return `M ${x0} ${y0 + h / 2}`;
+      return values.map((v, i) => {
+        const x = x0 + i * w / (values.length - 1);
+        const y = y0 + h - (v / yMax) * h;
+        return `${i ? "L" : "M"} ${x.toFixed(2)} ${y.toFixed(2)}`;
+      }).join(" ");
+    }
+    function setupSvg(svg) {
+      svg.innerHTML = "";
+      const width = svg.clientWidth || 640;
+      const height = 280;
+      svg.setAttribute("viewBox", `0 0 ${width} ${height}`);
+      return { width, height, x0: 44, y0: 14, w: width - 58, h: height - 42 };
+    }
+    function axis(svg, box, yMax, xMaxLabel) {
+      const { x0, y0, w, h } = box;
+      for (let i = 0; i <= 4; i++) {
+        const y = y0 + h - i * h / 4;
+        svg.insertAdjacentHTML("beforeend", `<line class="gridline" x1="${x0}" y1="${y}" x2="${x0+w}" y2="${y}"/>`);
+        svg.insertAdjacentHTML("beforeend", `<text x="${x0-8}" y="${y+4}" text-anchor="end" font-size="10" fill="#777">${fmt.format(yMax*i/4)}</text>`);
+      }
+      svg.insertAdjacentHTML("beforeend", `<line class="axis" x1="${x0}" y1="${y0+h}" x2="${x0+w}" y2="${y0+h}"/>`);
+      svg.insertAdjacentHTML("beforeend", `<line class="axis" x1="${x0}" y1="${y0}" x2="${x0}" y2="${y0+h}"/>`);
+      svg.insertAdjacentHTML("beforeend", `<text x="${x0}" y="${y0+h+18}" font-size="10" fill="#777">0</text>`);
+      svg.insertAdjacentHTML("beforeend", `<text x="${x0+w}" y="${y0+h+18}" text-anchor="end" font-size="10" fill="#777">${xMaxLabel}</text>`);
+    }
+    function lineChart(svg, series, yMax, xMaxLabel) {
+      const box = setupSvg(svg);
+      axis(svg, box, yMax, xMaxLabel);
+      for (const s of series) {
+        svg.insertAdjacentHTML("beforeend", `<path class="${s.cls}" d="${pathLine(s.values, box.x0, box.y0, box.w, box.h, yMax)}"/>`);
+      }
+    }
+    function heatmap(svg, layers) {
+      const box = setupSvg(svg);
+      const e = layers[0].gate_mean.length;
+      const cellW = box.w / e;
+      const cellH = box.h / layers.length;
+      const m = Math.max(...layers.flatMap(l => l.gate_mean));
+      svg.insertAdjacentHTML("beforeend", `<text x="${box.x0}" y="${box.y0-3}" font-size="10" fill="#777">layer</text>`);
+      layers.forEach((layer, r) => {
+        svg.insertAdjacentHTML("beforeend", `<text x="${box.x0-8}" y="${box.y0 + r*cellH + cellH*.65}" text-anchor="end" font-size="10" fill="#777">${r}</text>`);
+        layer.gate_mean.forEach((v, c) => {
+          const t = Math.max(0, Math.min(1, v / m));
+          const color = `rgb(${245 - 180*t}, ${247 - 120*t}, ${248 - 30*t})`;
+          svg.insertAdjacentHTML("beforeend", `<rect x="${box.x0+c*cellW}" y="${box.y0+r*cellH}" width="${Math.max(cellW+.5,1)}" height="${cellH+.5}" fill="${color}"/>`);
+        });
+      });
+      svg.insertAdjacentHTML("beforeend", `<line class="axis" x1="${box.x0}" y1="${box.y0+box.h}" x2="${box.x0+box.w}" y2="${box.y0+box.h}"/>`);
+      svg.insertAdjacentHTML("beforeend", `<text x="${box.x0}" y="${box.y0+box.h+18}" font-size="10" fill="#777">expert 0</text>`);
+      svg.insertAdjacentHTML("beforeend", `<text x="${box.x0+box.w}" y="${box.y0+box.h+18}" text-anchor="end" font-size="10" fill="#777">expert ${e-1}</text>`);
+    }
+    function render() {
+      const model = data.models[document.getElementById("model").selectedIndex];
+      const layerIdx = Number(document.getElementById("layer").value);
+      const layer = model.layers[layerIdx];
+      const k = Math.round(sum(layer.select_rate));
+      const selectScaled = layer.select_rate.map(v => v / Math.max(k, 1));
+      const yMaxRaw = document.getElementById("scale").value === "share"
+        ? Math.max(...model.layers.flatMap(l => [...l.gate_mean, ...l.prob_mean, ...l.select_rate.map(v => v / Math.max(Math.round(sum(l.select_rate)), 1))]))
+        : Math.max(...layer.gate_mean, ...layer.prob_mean, ...selectScaled);
+      lineChart(document.getElementById("raw"), [
+        { values: layer.gate_mean, cls: "series-gate" },
+        { values: layer.prob_mean, cls: "series-prob" },
+        { values: selectScaled, cls: "series-select" },
+      ], yMaxRaw * 1.05, `expert ${model.experts - 1}`);
+      const yMaxSorted = document.getElementById("scale").value === "share"
+        ? Math.max(...model.layers.flatMap(l => l.sorted_gate_mean))
+        : Math.max(...layer.sorted_gate_mean);
+      lineChart(document.getElementById("sorted"), [{ values: layer.sorted_gate_mean, cls: "series-gate" }], yMaxSorted * 1.05, `rank ${model.experts - 1}`);
+      heatmap(document.getElementById("heat"), model.layers);
+      lineChart(document.getElementById("allLayers"), model.layers.map((l, i) => ({ values: l.sorted_gate_mean, cls: "series-gate" })), Math.max(...model.layers.flatMap(l => l.sorted_gate_mean)) * 1.05, `rank ${model.experts - 1}`);
+      document.querySelectorAll("#allLayers .series-gate").forEach((el, i) => {
+        el.style.opacity = i === layerIdx ? "1" : ".22";
+        el.style.strokeWidth = i === layerIdx ? "2.2" : "1.1";
+      });
+      const rows = layer.gate_mean.map((v, i) => ({
+        expert: i,
+        gate: v,
+        prob: layer.prob_mean[i],
+        select: layer.select_rate[i],
+      })).sort((a, b) => b.gate - a.gate);
+      const topn = Number(document.getElementById("topn").value);
+      document.getElementById("table").innerHTML = `<thead><tr><th>expert</th><th>gate_mean</th><th>prob_mean</th><th>select_rate</th><th>select/gate</th></tr></thead><tbody>` +
+        rows.slice(0, topn).map(r => `<tr><td>${r.expert}</td><td>${fmt.format(r.gate)}</td><td>${fmt.format(r.prob)}</td><td>${pct.format(r.select)}</td><td>${fmt.format(r.select / Math.max(r.gate, 1e-12))}</td></tr>`).join("") +
+        `</tbody>`;
+      const metrics = [
+        ["experts", model.experts],
+        ["top-k", k],
+        ["gate entropy norm", fmt.format(entropyNorm(layer.gate_mean))],
+        ["gate max/mean", fmt.format(max(layer.gate_mean) / mean(layer.gate_mean))],
+        ["select max/mean", fmt.format(max(layer.select_rate) / mean(layer.select_rate))],
+      ];
+      document.getElementById("summary").innerHTML = metrics.map(([k, v]) => `<div class="metric"><div class="k">${k}</div><div class="v">${v}</div></div>`).join("");
+    }
+    async function boot() {
+      data = await fetch("route_dashboard_data.json").then(r => r.json());
+      const modelSel = document.getElementById("model");
+      modelSel.innerHTML = data.models.map(m => `<option>${m.name}</option>`).join("");
+      const layerSel = document.getElementById("layer");
+      layerSel.innerHTML = data.models[0].layers.map(l => `<option value="${l.layer}">layer ${l.layer}</option>`).join("");
+      modelSel.addEventListener("change", () => {
+        const m = data.models[modelSel.selectedIndex];
+        layerSel.innerHTML = m.layers.map(l => `<option value="${l.layer}">layer ${l.layer}</option>`).join("");
+        render();
+      });
+      ["layer", "scale", "topn"].forEach(id => document.getElementById(id).addEventListener("change", render));
+      window.addEventListener("resize", render);
+      render();
+    }
+    boot();
+  </script>
+</body>
+</html>

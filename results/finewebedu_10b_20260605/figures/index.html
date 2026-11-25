@@ -1,0 +1,172 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>PA MoE Paper Figures</title>
+<style>body{font-family:Arial,sans-serif;margin:24px;background:#fbfbf8;color:#171714;max-width:980px}img{width:100%;max-width:900px;background:white;border:1px solid #ddd;margin-bottom:18px}table{border-collapse:collapse;background:white}td,th{border:1px solid #ddd;padding:5px 7px;font-size:12px}th{background:#eee}code{background:#eee;padding:1px 3px}</style></head>
+<body><h1>PA MoE Paper Figures</h1>
+<p>Source: <code>results/finewebedu_10b_20260605</code>. Full validation tokens: 99,617,792. CE/BPB exclude auxiliary loss.</p>
+<p>Best: <b>pa_e256k16_pdim256_lb0.01</b>, CE 1.684696, BPB 0.994241.</p>
+<h2>fig1_final_bpb_vs_experts</h2><img src="fig1_final_bpb_vs_experts.svg">
+<h2>fig2_pa_gain_vs_experts</h2><img src="fig2_pa_gain_vs_experts.svg">
+<h2>fig3_lb_routing_effect</h2><img src="fig3_lb_routing_effect.svg">
+<h2>fig4_bpb_vs_route_concentration</h2><img src="fig4_bpb_vs_route_concentration.svg">
+<h2>appendix_layerwise_routing_heatmap</h2><img src="appendix_layerwise_routing_heatmap.svg">
+<h2>appendix_sorted_gate_distribution</h2><img src="appendix_sorted_gate_distribution.svg">
+<h2>appendix_sorted_select_distribution</h2><img src="appendix_sorted_select_distribution.svg">
+<h2>appendix_eval_throughput</h2><img src="appendix_eval_throughput.svg">
+<h2>appendix_training_curves</h2><img src="appendix_training_curves.svg">
+<h2>Parameter Comparison</h2>
+<p>PA extra params are measured against the linear-router MoE at the same expert count.</p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>experts</th>
+      <th>PA pdim</th>
+      <th>linear total params</th>
+      <th>PA total params</th>
+      <th>PA extra params vs linear</th>
+      <th>PA extra %</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>32</td>
+      <td>128</td>
+      <td>23.743M</td>
+      <td>26.298M</td>
+      <td>2.556M</td>
+      <td>10.77%</td>
+    </tr>
+    <tr>
+      <td>64</td>
+      <td>256</td>
+      <td>40.651M</td>
+      <td>45.763M</td>
+      <td>5.112M</td>
+      <td>12.57%</td>
+    </tr>
+    <tr>
+      <td>128</td>
+      <td>256</td>
+      <td>74.467M</td>
+      <td>80.366M</td>
+      <td>5.898M</td>
+      <td>7.92%</td>
+    </tr>
+    <tr>
+      <td>256</td>
+      <td>256</td>
+      <td>142.101M</td>
+      <td>149.572M</td>
+      <td>7.471M</td>
+      <td>5.26%</td>
+    </tr>
+  </tbody>
+</table>
+<h2>Summary Table</h2><table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>model</th>
+      <th>val_loss_ce</th>
+      <th>val_bpb</th>
+      <th>tokens_per_second</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>linear_e32k16_lb0</td>
+      <td>1.892700</td>
+      <td>1.116996</td>
+      <td>274,494</td>
+    </tr>
+    <tr>
+      <td>linear_e32k16_lb0.01</td>
+      <td>1.892942</td>
+      <td>1.117139</td>
+      <td>273,439</td>
+    </tr>
+    <tr>
+      <td>linear_e64k16_lb0</td>
+      <td>1.831201</td>
+      <td>1.080702</td>
+      <td>265,936</td>
+    </tr>
+    <tr>
+      <td>linear_e64k16_lb0.01</td>
+      <td>1.828778</td>
+      <td>1.079272</td>
+      <td>273,278</td>
+    </tr>
+    <tr>
+      <td>linear_e128k16_lb0</td>
+      <td>1.771703</td>
+      <td>1.045588</td>
+      <td>238,910</td>
+    </tr>
+    <tr>
+      <td>linear_e128k16_lb0.01</td>
+      <td>1.770676</td>
+      <td>1.044983</td>
+      <td>245,214</td>
+    </tr>
+    <tr>
+      <td>linear_e256k16_lb0</td>
+      <td>1.729289</td>
+      <td>1.020557</td>
+      <td>191,293</td>
+    </tr>
+    <tr>
+      <td>linear_e256k16_lb0.01</td>
+      <td>1.719154</td>
+      <td>1.014576</td>
+      <td>192,611</td>
+    </tr>
+    <tr>
+      <td>pa_e32k16_pdim128_lb0</td>
+      <td>1.861119</td>
+      <td>1.098358</td>
+      <td>267,388</td>
+    </tr>
+    <tr>
+      <td>pa_e32k16_pdim128_lb0.01</td>
+      <td>1.860871</td>
+      <td>1.098212</td>
+      <td>266,650</td>
+    </tr>
+    <tr>
+      <td>pa_e64k16_pdim256_lb0</td>
+      <td>1.796495</td>
+      <td>1.060220</td>
+      <td>254,417</td>
+    </tr>
+    <tr>
+      <td>pa_e64k16_pdim256_lb0.01</td>
+      <td>1.796356</td>
+      <td>1.060138</td>
+      <td>260,919</td>
+    </tr>
+    <tr>
+      <td>pa_e128k16_pdim256_lb0</td>
+      <td>1.737940</td>
+      <td>1.025663</td>
+      <td>226,138</td>
+    </tr>
+    <tr>
+      <td>pa_e128k16_pdim256_lb0.01</td>
+      <td>1.738437</td>
+      <td>1.025956</td>
+      <td>231,585</td>
+    </tr>
+    <tr>
+      <td>pa_e256k16_pdim256_lb0</td>
+      <td>1.684794</td>
+      <td>0.994298</td>
+      <td>170,289</td>
+    </tr>
+    <tr>
+      <td>pa_e256k16_pdim256_lb0.01</td>
+      <td>1.684696</td>
+      <td>0.994241</td>
+      <td>176,548</td>
+    </tr>
+  </tbody>
+</table>
+</body></html>

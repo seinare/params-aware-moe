@@ -1,0 +1,17 @@
+model,checkpoint,key,router_type,num_experts,lb_train_coef,product_dim,candidates,top_k,router_m
+linear_e32k16_lb0,runpod_results/checkpoint/ddp_10b/ddp10b_linear_e32k16_lb0_20260604_100840_step019073.pt,linear_e32k16_lb0,linear,32,0.0,256,"('ddp10b_linear_e32k16_lb0_*_step019073.pt',)",16,4
+linear_e32k16_lb0.01,runpod_results/checkpoint/ddp_10b/linear_e32k16/ddp10b_linear_e32k16_20260530_062619_step019073.pt,linear_e32k16_lb0.01,linear,32,0.01,256,"('linear_e32k16/ddp10b_linear_e32k16_*_step019073.pt',)",16,4
+linear_e64k16_lb0,runpod_results/checkpoint/ddp_10b/ddp10b_linear_e64k16_lb0_20260604_130935_step019073.pt,linear_e64k16_lb0,linear,64,0.0,256,"('ddp10b_linear_e64k16_lb0_*_step019073.pt',)",16,4
+linear_e64k16_lb0.01,runpod_results/checkpoint/ddp_10b/linear_e64k16/ddp10b_linear_e64k16_20260530_090153_step019073.pt,linear_e64k16_lb0.01,linear,64,0.01,256,"('linear_e64k16/ddp10b_linear_e64k16_*_step019073.pt',)",16,4
+linear_e128k16_lb0,runpod_results/checkpoint/ddp_10b/ddp10b_linear_e128k16_lb0_20260604_161428_step019073.pt,linear_e128k16_lb0,linear,128,0.0,256,"('ddp10b_linear_e128k16_lb0_*_step019073.pt',)",16,4
+linear_e128k16_lb0.01,runpod_results/checkpoint/ddp_10b/ddp10b_linear_e128k16_step019073.pt,linear_e128k16_lb0.01,linear,128,0.01,256,"('ddp10b_linear_e128k16_step019073.pt',)",16,4
+linear_e256k16_lb0,runpod_results/checkpoint/ddp_10b/ddp10b_linear_e256k16_lb0_20260604_193527_step019073.pt,linear_e256k16_lb0,linear,256,0.0,256,"('ddp10b_linear_e256k16_lb0_*_step019073.pt',)",16,4
+linear_e256k16_lb0.01,runpod_results/checkpoint/ddp_10b/ddp10b_linear_e256k16_step019073.pt,linear_e256k16_lb0.01,linear,256,0.01,256,"('ddp10b_linear_e256k16_step019073.pt',)",16,4
+pa_e32k16_pdim128_lb0,runpod_results/checkpoint/ddp_10b/ddp10b_pa_e32k16_pd128_lb0_step019073.pt,pa_e32k16_pdim128_lb0,param,32,0.0,128,"('ddp10b_pa_e32k16_pd128_lb0_step019073.pt',)",16,4
+pa_e32k16_pdim128_lb0.01,runpod_results/checkpoint/ddp_10b/ddp10b_pa_e32k16_pd128_step019073.pt,pa_e32k16_pdim128_lb0.01,param,32,0.01,128,"('ddp10b_pa_e32k16_pd128_step019073.pt',)",16,4
+pa_e64k16_pdim256_lb0,runpod_results/checkpoint/ddp_10b/ddp10b_pa_e64k16_pd256_lb0_step019073.pt,pa_e64k16_pdim256_lb0,param,64,0.0,256,"('ddp10b_pa_e64k16_pd256_lb0_step019073.pt',)",16,4
+pa_e64k16_pdim256_lb0.01,runpod_results/checkpoint/ddp_10b/pa_e64k16_pd256/ddp10b_pa_e64k16_pd256_20260529_212352_step019073.pt,pa_e64k16_pdim256_lb0.01,param,64,0.01,256,"('pa_e64k16_pd256/ddp10b_pa_e64k16_pd256_*_step019073.pt', 'ddp10b_pa_e64k16_pd256_*_step019073.pt')",16,4
+pa_e128k16_pdim256_lb0,runpod_results/checkpoint/ddp_10b/ddp10b_pa_e128k16_pd256_lb0_step019073.pt,pa_e128k16_pdim256_lb0,param,128,0.0,256,"('ddp10b_pa_e128k16_pd256_lb0_step019073.pt',)",16,4
+pa_e128k16_pdim256_lb0.01,runpod_results/checkpoint/ddp_10b/pa_e128k16_pd256/ddp10b_pa_e128k16_pd256_20260530_001618_step019073.pt,pa_e128k16_pdim256_lb0.01,param,128,0.01,256,"('pa_e128k16_pd256/ddp10b_pa_e128k16_pd256_*_step019073.pt', 'ddp10b_pa_e128k16_pd256_*_step019073.pt')",16,4
+pa_e256k16_pdim256_lb0,runpod_results/checkpoint/ddp_10b/ddp10b_pa_e256k16_pd256_lb0_step019073.pt,pa_e256k16_pdim256_lb0,param,256,0.0,256,"('ddp10b_pa_e256k16_pd256_lb0_step019073.pt',)",16,4
+pa_e256k16_pdim256_lb0.01,runpod_results/checkpoint/ddp_10b/pa_e256k16_pd256/ddp10b_pa_e256k16_pd256_20260530_030007_step019073.pt,pa_e256k16_pdim256_lb0.01,param,256,0.01,256,"('pa_e256k16_pd256/ddp10b_pa_e256k16_pd256_*_step019073.pt', 'ddp10b_pa_e256k16_pd256_*_step019073.pt')",16,4
